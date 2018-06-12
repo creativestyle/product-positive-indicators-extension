@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <preference for="Creativestyle\ProductPositiveIndicatorsExtension\Parser\TopAttributeInterface"
+                type="Creativestyle\ProductPositiveIndicatorsExtension\Parser\TopAttribute" />
+
+    <preference for="Creativestyle\ProductPositiveIndicatorsExtension\Service\DeliveryDataProviderInterface"
+                type="Creativestyle\ProductPositiveIndicatorsExtension\Service\DeliveryDataProvider" />
+
+    <preference for="Creativestyle\ProductPositiveIndicatorsExtension\Service\FreeShippingInterface"
+                type="Creativestyle\ProductPositiveIndicatorsExtension\Service\FreeShipping" />
+
+    <preference for="Creativestyle\ProductPositiveIndicatorsExtension\Api\OrderQueueLengthUpdaterInterface"
+                type="Creativestyle\ProductPositiveIndicatorsExtension\Service\OrderQueueLengthUpdater" />
+
+    <type name="Magento\Catalog\Block\Adminhtml\Product\Attribute\Edit\Tabs">
+        <plugin name="add_top_attribute_tabs_plugin"
+                type="Creativestyle\ProductPositiveIndicatorsExtension\Plugin\AddTopAttributeTab"/>
+    </type>
+
+    <type name="Magento\Catalog\Model\ResourceModel\Eav\Attribute">
+        <plugin name="calculate_top_attribute_plugin"
+                type="Creativestyle\ProductPositiveIndicatorsExtension\Plugin\CalculateTopAttribute"/>
+    </type>
+
+    <type name="Smile\ElasticsuiteCatalog\Model\Autocomplete\Product\ItemFactory">
+        <plugin name="add_indicators_to_search_flyout" type="\Creativestyle\ProductPositiveIndicatorsExtension\Plugin\AddIndicatorsToSearchFlyout" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="cs_indicator_top_attribute_refresh" xsi:type="object">Creativestyle\ProductPositiveIndicatorsExtension\Console\Command\TopAttributeRefresh</item>
+                <item name="cs_indicator_popular_icon" xsi:type="object">Creativestyle\ProductPositiveIndicatorsExtension\Console\Command\PopularIcon</item>
+                <item name="cs_indicator_recently_bought" xsi:type="object">Creativestyle\ProductPositiveIndicatorsExtension\Console\Command\RecentlyBought</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Creativestyle\ProductPositiveIndicatorsExtension\Block\FastShipping\Product">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="cache_lifetime" xsi:type="number">300</item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>

@@ -1,0 +1,10 @@
+
+<?php
+/** @var $block \Creativestyle\ProductPositiveIndicatorsExtension\Block\FreeShipping\Product */
+if ($block->isFreeShippingAvailable() && $block->showBadgeOnProductsDetailpage()): ?>
+    <span class="cs-badge cs-badge--positive cs-badge--round cs-badge--free-shipping">
+        <svg class="cs-badge__icon"><use xlink:href="#truck_moving"></use></svg>
+        <span class="cs-badge__span"><?php echo __('Free Shipping'); ?></span>
+    </span>
+<?php endif; ?>
+

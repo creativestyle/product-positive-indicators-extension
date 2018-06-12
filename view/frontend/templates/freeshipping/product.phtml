@@ -1,0 +1,6 @@
+<?php
+/** @var $block \Creativestyle\ProductPositiveIndicatorsExtension\Block\FreeShipping\Product */
+if ($block->isFreeShippingAvailable() && $block->showTextNoteOnProductsDetailpage()): ?>
+    <svg class="cs-indicators__free-shipping-icon"><use xlink:href="#truck_moving"></use></svg>
+    <span class="cs-indicators__free-shipping-text"><?php echo __('Free Shipping'); ?></span>
+<?php endif; ?>

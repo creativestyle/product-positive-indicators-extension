@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2016 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.form.content">
+            <block class="Creativestyle\ProductPositiveIndicatorsExtension\Block\OnlyXAvailable\Product" name="indicator_only_x_available" template="Creativestyle_ProductPositiveIndicatorsExtension::onlyxavailable/product.phtml" after="product.info.addtocart"/>
+            <block class="Creativestyle\ProductPositiveIndicatorsExtension\Block\RecentlyBought\Product" name="indicator_recently_bought" template="Creativestyle_ProductPositiveIndicatorsExtension::recentlybought/product.phtml" after="indicator_only_x_available"/>
+            <block class="Creativestyle\ProductPositiveIndicatorsExtension\Block\FreeShipping\Product" name="indicator_free_shipping" template="Creativestyle_ProductPositiveIndicatorsExtension::freeshipping/product.phtml" before="product.info.addtocart" />
+        </referenceContainer>
+    </body>
+</page>
